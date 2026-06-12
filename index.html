@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Once upon a Birthday — Sajal ❤️</title>
+  <!-- SEO & Premium Fonts/Icons -->
+  <meta name="description" content="A premium, elegant starlight birthday surprise for Sajal Patil from Aditi Pore.">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Premium Google Fonts Import -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,400&family=Outfit:wght@300;400;500;600&family=Caveat:wght@400;700&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Twinkling Star Background Layer -->
+  <div class="stars-bg" id="stars-container"></div>
+  
+  <!-- Floating Glass Stardust Hearts Layer -->
+  <div class="floating-hearts-container" id="hearts-container"></div>
+  
+  <!-- High Performance Canvas for Confetti -->
+  <canvas id="confetti-canvas"></canvas>
+
+  <!-- Main App Viewport -->
+  <div id="app-container">
+
+    <!-- STAGE 1: Welcome Entrance Screen (Once upon a Birthday Cover) -->
+    <div id="screen-welcome" class="screen active">
+      <div class="glass-card">
+        <!-- Monogram logo badge exactly like Eric & Li mockup -->
+        <div class="monogram-badge">
+          <span class="monogram-text">S & A</span>
+        </div>
+        
+        <!-- Welcome Pill cursive title exactly matching layout screenshot -->
+        <div class="classy-title-container">
+          <span class="script-title">Once</span>
+          <div class="upon-pill-wrapper">
+            <span class="upon-pill">upon</span>
+          </div>
+          <span class="script-title">a Birthday</span>
+        </div>
+
+        <p class="classy-subtitle">Enter a world where dreams dance under starlight<br>and a birthday wish comes to life.</p>
+        
+        <p class="welcome-intro-text">I have created a special romantic timeline just for you to celebrate your day, my love. Complete a few sweet questions about our adventure together to unlock your birthday letter and cards! 😉</p>
+        
+        <div class="partner-accent">To Mr. Sajal Patil ❤️</div>
+        
+        <div style="margin-top: 35px;">
+          <button id="btn-start" class="btn-neon">
+            Enter the Dream <i class="fa-solid fa-chevron-right" style="margin-left: 8px;"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- STAGE 2: Interactive Love Quiz Screen -->
+    <div id="screen-quiz" class="screen">
+      <div class="glass-card">
+        <div class="quiz-progress">
+          <span id="quiz-question-number">MEMORIES > STAGE 1/4</span>
+          <div class="progress-bar">
+            <div id="quiz-progress-fill" class="progress-fill"></div>
+          </div>
+          <span id="quiz-score">REVEAL: 0%</span>
+        </div>
+        
+        <div class="quiz-card">
+          <div id="quiz-question" class="question-text">
+            When did our beautiful story begin?
+          </div>
+          <div id="quiz-options" class="quiz-options">
+            <!-- Buttons dynamically generated -->
+          </div>
+          <div id="quiz-feedback" class="quiz-feedback"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- STAGE 3: Memory Lane Polaroid Gallery Screen (Unlocked Timeline) -->
+    <div id="screen-memories" class="screen">
+      <div class="glass-card">
+        <p class="subtitle">OUR STORY > CHERISHED TIMELINE</p>
+        <h2>Unlocked Memories 📸</h2>
+        <p>Every picture is a saved chapter of our journey together. Swipe or click to browse through our memories!</p>
+        
+        <!-- Polaroid Deck Stack -->
+        <div class="polaroid-deck" id="polaroid-deck">
+          <!-- Polaroid cards injected dynamically -->
+        </div>
+
+        <!-- Controls -->
+        <div class="gallery-nav">
+          <button id="btn-prev-photo" class="btn-nav" aria-label="Previous image">
+            <i class="fa-solid fa-arrow-left"></i>
+          </button>
+          <div class="gallery-dots" id="gallery-dots">
+            <!-- Dots generated dynamically -->
+          </div>
+          <button id="btn-next-photo" class="btn-nav" aria-label="Next image">
+            <i class="fa-solid fa-arrow-right"></i>
+          </button>
+        </div>
+
+        <div style="margin-top: 35px;">
+          <button id="btn-unlock-letter" class="btn-neon" style="display: none;">
+            Open Heartfelt Message 💖 <i class="fa-solid fa-envelope-open" style="margin-left: 8px;"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- STAGE 4: Heartfelt Love Letter Screen (Legendary Scroll) -->
+    <div id="screen-letter" class="screen">
+      <div class="glass-card" style="overflow: hidden; position: relative;">
+        <!-- Decorative Overlapping Poster Rings -->
+        <div class="poster-ring ring-1"></div>
+        <div class="poster-ring ring-2"></div>
+        <div class="poster-ring ring-3"></div>
+        <p class="subtitle">A HEARFTELT NOTE > FOR SAJAL</p>
+        <h2>My Letter to You ✉️</h2>
+        <p id="envelope-prompt">Touch the glowing heart seal to unseal the envelope...</p>
+
+        <!-- Interactive Envelope Container -->
+        <div class="envelope-container" id="envelope-container">
+          <div class="envelope-wrapper" id="birthday-envelope">
+            <div class="birthday-envelope"></div>
+            <div class="envelope-flap"></div>
+            <div class="envelope-pocket"></div>
+            <div class="heart-seal">
+              <i class="fa-solid fa-envelope-open-heart"></i>
+            </div>
+            <div class="letter-sheet">
+              <i class="fa-solid fa-scroll" style="font-size: 2.5rem; color: var(--p1-pink); margin-bottom: 10px; filter: drop-shadow(var(--glow-pink));"></i>
+              <span style="font-size: 1.1rem; color: #fff; font-weight: bold; font-family: var(--font-title);">Open Letter</span>
+              <span style="font-size: 0.8rem; color: var(--text-muted); margin-top: 5px;">Aditi's Heart Note</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Dynamic Typing Letter Card -->
+        <div class="love-letter-display" id="love-letter-display">
+          <!-- Poster-style Static Header -->
+          <div class="poster-header">
+            <img src="cute_cats.png" alt="Cute Cats" class="poster-cats-img">
+            <div class="poster-title-row">
+              <div class="poster-lollipop left-lollipop">
+                <svg viewBox="0 0 60 120" class="poster-lollipop-svg" width="45" height="90" xmlns="http://www.w3.org/2000/svg">
+                  <!-- Stick -->
+                  <line x1="30" y1="42" x2="30" y2="110" stroke="#1a1a1a" stroke-width="3" stroke-linecap="round" />
+                  <!-- Heart Candy -->
+                  <path d="M12 22 C12 10, 28 8, 30 20 C32 8, 48 10, 48 22 C48 36, 30 48, 30 48 C30 48, 12 36, 12 22 Z" fill="#ffb3c6" stroke="#1a1a1a" stroke-width="3" stroke-linejoin="round" />
+                  <!-- Candy Highlight -->
+                  <path d="M18 16 C16 20, 18 26, 18 26" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round" fill="none" />
+                  <!-- Ribbon Bow Left Loop -->
+                  <path d="M30 48 C20 40, 15 52, 28 52 Z" fill="#ff8fa3" stroke="#1a1a1a" stroke-width="2.5" stroke-linejoin="round" />
+                  <!-- Ribbon Bow Right Loop -->
+                  <path d="M30 48 C40 40, 45 52, 32 52 Z" fill="#ff8fa3" stroke="#1a1a1a" stroke-width="2.5" stroke-linejoin="round" />
+                  <!-- Ribbon Tails -->
+                  <path d="M26 51 L20 65" stroke="#1a1a1a" stroke-width="2.5" stroke-linecap="round" />
+                  <path d="M34 51 L40 65" stroke="#1a1a1a" stroke-width="2.5" stroke-linecap="round" />
+                  <!-- Center Knot -->
+                  <circle cx="30" cy="50" r="4.5" fill="#ff4d6d" stroke="#1a1a1a" stroke-width="2.5" />
+                </svg>
+              </div>
+              <div class="poster-title-center">
+                <div class="poster-you-me">YOU + ME</div>
+                <div class="poster-forever">forever</div>
+              </div>
+              <div class="poster-lollipop right-lollipop">
+                <svg viewBox="0 0 60 120" class="poster-lollipop-svg" width="45" height="90" xmlns="http://www.w3.org/2000/svg">
+                  <!-- Stick -->
+                  <line x1="30" y1="42" x2="30" y2="110" stroke="#1a1a1a" stroke-width="3" stroke-linecap="round" />
+                  <!-- Heart Candy -->
+                  <path d="M12 22 C12 10, 28 8, 30 20 C32 8, 48 10, 48 22 C48 36, 30 48, 30 48 C30 48, 12 36, 12 22 Z" fill="#ffb3c6" stroke="#1a1a1a" stroke-width="3" stroke-linejoin="round" />
+                  <!-- Candy Highlight -->
+                  <path d="M18 16 C16 20, 18 26, 18 26" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round" fill="none" />
+                  <!-- Ribbon Bow Left Loop -->
+                  <path d="M30 48 C20 40, 15 52, 28 52 Z" fill="#ff8fa3" stroke="#1a1a1a" stroke-width="2.5" stroke-linejoin="round" />
+                  <!-- Ribbon Bow Right Loop -->
+                  <path d="M30 48 C40 40, 45 52, 32 52 Z" fill="#ff8fa3" stroke="#1a1a1a" stroke-width="2.5" stroke-linejoin="round" />
+                  <!-- Ribbon Tails -->
+                  <path d="M26 51 L20 65" stroke="#1a1a1a" stroke-width="2.5" stroke-linecap="round" />
+                  <path d="M34 51 L40 65" stroke="#1a1a1a" stroke-width="2.5" stroke-linecap="round" />
+                  <!-- Center Knot -->
+                  <circle cx="30" cy="50" r="4.5" fill="#ff4d6d" stroke="#1a1a1a" stroke-width="2.5" />
+                </svg>
+              </div>
+            </div>
+            <div class="poster-recipient" id="poster-recipient-name">Sajal</div>
+          </div>
+
+          <div class="letter-text" id="typewriter-content">
+            <!-- Programmatic typing output goes here -->
+          </div>
+          <div style="text-align: center; margin-top: 35px; display: none;" id="btn-to-celebration-container">
+            <button id="btn-to-celebration" class="btn-neon">
+              Blow Birthday Cake! 🎂
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- STAGE 5: Grand Celebration Birthday Screen (Clear Game) -->
+    <div id="screen-celebration" class="screen">
+      <div class="glass-card celebrate-card">
+        <div class="avatar-container">
+          <div class="avatar-circle">
+            <div class="avatar-img" title="Aditi">👩🏻</div>
+          </div>
+          <i class="fa-solid fa-heart" style="color: var(--p1-pink); font-size: 1.5rem; animation: beat 1s infinite; filter: drop-shadow(var(--glow-pink));"></i>
+          <div class="avatar-circle">
+            <div class="avatar-img" title="Sajal">🧑🏻</div>
+          </div>
+        </div>
+        
+        <p class="subtitle">MADE WITH LOVE ❤️</p>
+        <h1 class="celebration-title">HAPPY BIRTHDAY, SAJAL! 🎉</h1>
+        <p>You successfully unlocked the ultimate surprise, my love. Blow out the gold starlight candles below to launch the celebration! 🥳</p>
+
+        <!-- Glowing Birthday Cake -->
+        <div class="cake-container" id="birthday-cake">
+          <div class="candles-row">
+            <div class="candle" id="candle-1">
+              <div class="candle-wick"></div>
+              <div class="candle-flame"></div>
+            </div>
+            <div class="candle" id="candle-2">
+              <div class="candle-wick"></div>
+              <div class="candle-flame"></div>
+            </div>
+            <div class="candle" id="candle-3">
+              <div class="candle-wick"></div>
+              <div class="candle-flame"></div>
+            </div>
+          </div>
+          
+          <div class="cake-tier">
+            <div class="cake-frosting"></div>
+          </div>
+          <div class="cake-tier base">
+            <div class="cake-frosting"></div>
+          </div>
+          
+          <div class="cake-instructions">🕯️ Click/Tap candles to blow them out!</div>
+        </div>
+
+        <div style="margin-top: 25px; opacity: 0; transition: opacity 1s ease;" id="final-hug-container">
+          <button id="btn-to-future" class="btn-neon">
+            Our Future Selves 👵🏻👴🏻 <i class="fa-solid fa-chevron-right" style="margin-left: 8px;"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- STAGE 6: Our Future Selves Screen (Grand Finale) -->
+    <div id="screen-future" class="screen">
+      <div class="scrapbook-container">
+        <div class="scrapbook-board">
+          <!-- Top Right Date -->
+          <div class="scrapbook-date">12.07.2025</div>
+          
+          <!-- Decorative Ruled Note Sheet (under Polaroid 4) -->
+          <div class="scrapbook-ruled-note">
+            <div class="ruled-line">you, I</div>
+            <div class="ruled-line">love you</div>
+            <div class="ruled-line">love you</div>
+            <div class="ruled-line">love you,</div>
+            <div class="ruled-line">I love</div>
+            <div class="ruled-line">love you</div>
+            <div class="ruled-line">love you</div>
+            <div class="ruled-line">love you</div>
+          </div>
+
+          <!-- Hand-drawn SVG Sketches Layer -->
+          <svg class="scrapbook-svg-sketches" viewBox="0 0 800 1000" xmlns="http://www.w3.org/2000/svg">
+            <!-- Flower top center -->
+            <g transform="translate(420, 70) scale(0.6)">
+              <path class="sketch-path" d="M0,0 C-15,-20 -35,-10 -25,10 C-35,25 -15,40 0,20 C15,40 35,25 25,10 C35,-10 15,-20 0,0" fill="none" stroke="#ffffff" stroke-width="3" stroke-linecap="round" />
+              <path class="sketch-path" d="M-12,5 C-25,10 -15,30 0,15" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" />
+            </g>
+            <!-- Flower middle left -->
+            <g transform="translate(60, 420) scale(0.8)">
+              <path class="sketch-path" d="M0,0 C-15,-20 -35,-10 -25,10 C-35,25 -15,40 0,20 C15,40 35,25 25,10 C35,-10 15,-20 0,0" fill="none" stroke="#ffffff" stroke-width="3" stroke-linecap="round" />
+            </g>
+            <!-- Sketched Heart middle right -->
+            <g transform="translate(730, 610) scale(0.6)">
+              <path class="sketch-path" d="M 0,0 C -15,-20 -35,0 -20,20 L 0,40 L 20,20 C 35,0 15,-20 0,0 Z" fill="none" stroke="#ffffff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" />
+            </g>
+            <!-- Paper plane bottom left -->
+            <g transform="translate(70, 810) scale(0.7)">
+              <!-- Plane -->
+              <path class="sketch-path" d="M -40,-10 L 10,-30 L -10,0 L -25,-5 Z" fill="none" stroke="#ffffff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+              <!-- Trail -->
+              <path class="sketch-path" d="M -70,25 C -55,20 -40,10 -50,-5 C -60,-20 -35,5 -30,5" fill="none" stroke="#ffffff" stroke-width="2.5" stroke-dasharray="6,6" stroke-linecap="round" />
+            </g>
+
+            <!-- Dotted connecting arrows with gold glow -->
+            <!-- Sajal comparison arrow: Polaroid 1 to Polaroid 2 -->
+            <path class="gold-arrow-path" d="M 320 220 Q 420 180 430 250" fill="none" stroke="#dfba6b" stroke-width="3.5" stroke-dasharray="6,6" stroke-linecap="round" marker-end="url(#gold-arrowhead)" />
+            <!-- Aditi comparison arrow: Polaroid 3 to Polaroid 4 -->
+            <path class="gold-arrow-path" d="M 330 680 Q 450 630 490 730" fill="none" stroke="#dfba6b" stroke-width="3.5" stroke-dasharray="6,6" stroke-linecap="round" marker-end="url(#gold-arrowhead)" />
+
+            <!-- Arrowhead markers -->
+            <defs>
+              <marker id="gold-arrowhead" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                <path d="M 0 1 L 10 5 L 0 9 z" fill="#dfba6b" />
+              </marker>
+            </defs>
+          </svg>
+
+          <!-- Polaroid 1 (Top Left): Sajal Now -->
+          <div class="scrapbook-polaroid polaroid-one" data-type="sajal-now">
+            <!-- Cream tape -->
+            <div class="tape-cream"></div>
+            <div class="polaroid-inner">
+              <img src="photo8.jpeg" alt="Sajal Now" class="polaroid-photo">
+            </div>
+          </div>
+
+          <!-- Polaroid 2 (Top Right): Sajal Later -->
+          <div class="scrapbook-polaroid polaroid-two" data-type="sajal-later">
+            <!-- L ♥ V E Typewriter Tape -->
+            <div class="tape-love">
+              <span class="typewriter-block">L</span>
+              <span class="typewriter-block heart">♥</span>
+              <span class="typewriter-block">V</span>
+              <span class="typewriter-block">E</span>
+            </div>
+            <div class="polaroid-inner">
+              <img src="photo10.jpg" alt="Sajal Later" class="polaroid-photo">
+            </div>
+            <div class="polaroid-caption">I would love you even when you'll look like this ❤️</div>
+          </div>
+
+          <!-- Polaroid 3 (Bottom Left): Aditi Now -->
+          <div class="scrapbook-polaroid polaroid-three" data-type="aditi-now">
+            <!-- Bobby Pin overlay -->
+            <div class="bobby-pin"></div>
+            <div class="polaroid-inner">
+              <img src="photo9.jpeg" alt="Aditi Now" class="polaroid-photo">
+            </div>
+          </div>
+
+          <!-- Polaroid 4 (Bottom Right): Aditi Later -->
+          <div class="scrapbook-polaroid polaroid-four" data-type="aditi-later">
+            <!-- Charcoal Tape -->
+            <div class="tape-charcoal"></div>
+            <div class="polaroid-inner">
+              <img src="photo11.jpg" alt="Aditi Later" class="polaroid-photo">
+            </div>
+            <div class="polaroid-caption">Will you love me when I will look like this? 💖</div>
+          </div>
+
+          <!-- Bottom Left Retro Quote -->
+          <div class="scrapbook-quote">
+            CELEBRATING THE LOVE WE HAVE AND THE MEMORIES WE'VE CREATED TOGETHER. WITH ALL MY HEART, I CHERISH EVERY MOMENT WITH YOU
+          </div>
+
+          <!-- Bottom Right Signature -->
+          <div class="scrapbook-signature-container">
+            <div class="sig-love-you">Love you,</div>
+            <div class="sig-name">ADITI</div>
+          </div>
+
+        </div>
+        
+        <!-- Replay Romance Trigger below the Scrapbook Board -->
+        <div class="scrapbook-actions">
+          <button id="btn-replay-future" class="btn-neon">
+            REPLAY ROMANCE <i class="fa-solid fa-rotate-left" style="margin-left: 8px;"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- SPECIAL MODAL FOR QUESTION 4 (Romantic Twist Popover) -->
+  <div class="special-modal" id="special-quiz-modal">
+    <div class="special-modal-content">
+      <div class="heart-burst">
+        <i class="fa-solid fa-heart"></i>
+      </div>
+      <div class="special-answer-title" id="special-reveal-title">Aditi says...</div>
+      <div class="special-answer-text" id="special-reveal-box">I love everything about you❤️</div>
+      <p class="special-modal-subtext">There was never any other correct choice! You are absolutely perfect in every single way. 🥰</p>
+      <button id="btn-close-special-modal" class="btn-neon" style="margin-top: 15px; border-color: var(--p1-pink); box-shadow: var(--glow-pink);">
+        View Our Timeline 📸
+      </button>
+    </div>
+  </div>
+
+
+
+  <!-- FLOATING MUSIC CONTROLLER (ELEGANT Equaliser) -->
+  <div class="music-toggle-container">
+    <button class="music-btn" id="music-btn" aria-label="Toggle background music">
+      <i class="fa-solid fa-music"></i>
+    </button>
+    <div>
+      <div class="music-status" id="music-status">Music Off</div>
+    </div>
+    <div class="music-eq">
+      <div class="eq-bar"></div>
+      <div class="eq-bar"></div>
+      <div class="eq-bar"></div>
+      <div class="eq-bar"></div>
+    </div>
+  </div>
+
+  <!-- Audio Player (Hidden, supports MP3) -->
+  <audio id="bg-audio" loop preload="auto">
+    <!-- Music source injected by config -->
+  </audio>
+
+  <!-- PREMIUM LIGHTBOX MODAL FOR POLAROIDS -->
+  <div class="lightbox-modal" id="lightbox-modal">
+    <span class="lightbox-close" id="lightbox-close">&times;</span>
+    <div class="lightbox-content">
+      <img id="lightbox-img" src="" alt="Enlarged Photo">
+      <div id="lightbox-caption" class="lightbox-caption"></div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="config.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
+
